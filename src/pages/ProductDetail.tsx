@@ -5,6 +5,7 @@ import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import { products } from '@/data/products';
 import { useCart } from '@/context/CartContext';
+import { useWishlist } from '@/context/WishlistContext';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import ProductCard from '@/components/products/ProductCard';
@@ -13,6 +14,7 @@ const ProductDetail = () => {
   const { id } = useParams<{ id: string }>();
   const product = products.find((p) => p.id === id);
   const { addToCart } = useCart();
+  const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlist();
   const { toast } = useToast();
 
   const [selectedSize, setSelectedSize] = useState<string>('');
@@ -57,9 +59,7 @@ const ProductDetail = () => {
       return;
     }
 
-    for (let i = 0; i < quantity; i++) {
-      addToCart(product, selectedSize, selectedColor);
-    }
+    addToCart(product, quantity, selectedSize, selectedColor);
   };
 
   const discount = product.originalPrice
@@ -249,8 +249,21 @@ const ProductDetail = () => {
               >
                 Add to Cart
               </Button>
-              <Button size="lg" variant="outline" className="px-4">
-                <Heart className="h-5 w-5" />
+              <Button
+                size="lg"
+                variant="outline"
+                className={`px-4 transition-all duration-300 hover:scale-105 ${
+                  isInWishlist(product.id) ? 'text-destructive border-destructive' : ''
+                }`}
+                onClick={() => {
+                  if (isInWishlist(product.id)) {
+                    removeFromWishlist(product.id);
+                  } else {
+                    addToWishlist(product);
+                  }
+                }}
+              >
+                <Heart className={`h-5 w-5 ${isInWishlist(product.id) ? 'fill-current' : ''}`} />
               </Button>
               <Button size="lg" variant="outline" className="px-4">
                 <Share2 className="h-5 w-5" />
