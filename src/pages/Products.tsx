@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Filter, X, ChevronDown } from 'lucide-react';
 import Navbar from '@/components/layout/Navbar';
@@ -14,7 +14,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { Checkbox } from '@/components/ui/checkbox';
 
 const sizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL', '28', '30', '32', '34', '36', '38', '2-3Y', '4-5Y', '6-7Y', '8-9Y', '10-11Y'];
 const priceRanges = [
@@ -29,9 +28,14 @@ const Products = () => {
   const categoryParam = searchParams.get('category');
   
   const [selectedCategory, setSelectedCategory] = useState<string | null>(categoryParam);
-  const [selectedSizes, setSelectedSizes] = useState<string[]>([]);
+  const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [selectedPriceRange, setSelectedPriceRange] = useState<number | null>(null);
   const [sortBy, setSortBy] = useState('newest');
+
+  // Sync category with URL params
+  useEffect(() => {
+    setSelectedCategory(categoryParam);
+  }, [categoryParam]);
 
   const filteredProducts = useMemo(() => {
     let filtered = [...products];
@@ -41,10 +45,10 @@ const Products = () => {
       filtered = filtered.filter((p) => p.category === selectedCategory);
     }
 
-    // Filter by size
-    if (selectedSizes.length > 0) {
+    // Filter by size (single selection)
+    if (selectedSize) {
       filtered = filtered.filter((p) =>
-        p.sizes.some((size) => selectedSizes.includes(size))
+        p.sizes.includes(selectedSize)
       );
     }
 
@@ -72,37 +76,36 @@ const Products = () => {
     }
 
     return filtered;
-  }, [selectedCategory, selectedSizes, selectedPriceRange, sortBy]);
+  }, [selectedCategory, selectedSize, selectedPriceRange, sortBy]);
 
-  const toggleSize = (size: string) => {
-    setSelectedSizes((prev) =>
-      prev.includes(size) ? prev.filter((s) => s !== size) : [...prev, size]
-    );
+  const selectSize = (size: string) => {
+    setSelectedSize(selectedSize === size ? null : size);
   };
 
   const clearFilters = () => {
     setSelectedCategory(null);
-    setSelectedSizes([]);
+    setSelectedSize(null);
     setSelectedPriceRange(null);
   };
 
-  const hasFilters = selectedCategory || selectedSizes.length > 0 || selectedPriceRange !== null;
+  const hasFilters = selectedCategory || selectedSize || selectedPriceRange !== null;
 
   const FilterContent = () => (
     <div className="space-y-6">
       {/* Category */}
-      <div>
+      <div className="animate-fade-in">
         <h4 className="font-semibold mb-3">Category</h4>
         <div className="space-y-2">
-          {['women', 'men', 'kids'].map((cat) => (
+          {['women', 'men', 'kids'].map((cat, index) => (
             <button
               key={cat}
               onClick={() => setSelectedCategory(selectedCategory === cat ? null : cat)}
-              className={`block w-full text-left px-3 py-2 rounded-lg transition-colors ${
+              className={`block w-full text-left px-3 py-2 rounded-lg transition-all duration-300 transform hover:translate-x-1 ${
                 selectedCategory === cat
-                  ? 'bg-primary text-primary-foreground'
+                  ? 'bg-primary text-primary-foreground scale-[1.02] shadow-md'
                   : 'hover:bg-secondary'
               }`}
+              style={{ animationDelay: `${index * 0.05}s` }}
             >
               {cat.charAt(0).toUpperCase() + cat.slice(1)}
             </button>
@@ -111,16 +114,16 @@ const Products = () => {
       </div>
 
       {/* Price Range */}
-      <div>
+      <div className="animate-fade-in" style={{ animationDelay: '0.1s' }}>
         <h4 className="font-semibold mb-3">Price Range</h4>
         <div className="space-y-2">
           {priceRanges.map((range, index) => (
             <button
               key={index}
               onClick={() => setSelectedPriceRange(selectedPriceRange === index ? null : index)}
-              className={`block w-full text-left px-3 py-2 rounded-lg transition-colors ${
+              className={`block w-full text-left px-3 py-2 rounded-lg transition-all duration-300 transform hover:translate-x-1 ${
                 selectedPriceRange === index
-                  ? 'bg-primary text-primary-foreground'
+                  ? 'bg-primary text-primary-foreground scale-[1.02] shadow-md'
                   : 'hover:bg-secondary'
               }`}
             >
@@ -130,19 +133,20 @@ const Products = () => {
         </div>
       </div>
 
-      {/* Sizes */}
-      <div>
+      {/* Sizes - Single Selection */}
+      <div className="animate-fade-in" style={{ animationDelay: '0.2s' }}>
         <h4 className="font-semibold mb-3">Size</h4>
         <div className="flex flex-wrap gap-2">
-          {sizes.map((size) => (
+          {sizes.map((size, index) => (
             <button
               key={size}
-              onClick={() => toggleSize(size)}
-              className={`px-3 py-1.5 text-sm border rounded-lg transition-colors ${
-                selectedSizes.includes(size)
-                  ? 'bg-foreground text-background border-foreground'
-                  : 'border-border hover:border-foreground'
+              onClick={() => selectSize(size)}
+              className={`px-3 py-1.5 text-sm border rounded-lg transition-all duration-200 transform hover:scale-105 active:scale-95 ${
+                selectedSize === size
+                  ? 'bg-foreground text-background border-foreground shadow-md'
+                  : 'border-border hover:border-foreground hover:shadow-sm'
               }`}
+              style={{ animationDelay: `${index * 0.02}s` }}
             >
               {size}
             </button>
@@ -220,37 +224,36 @@ const Products = () => {
 
         {/* Active Filters */}
         {hasFilters && (
-          <div className="flex flex-wrap items-center gap-2 mb-6">
+          <div className="flex flex-wrap items-center gap-2 mb-6 animate-fade-in">
             {selectedCategory && (
-              <span className="inline-flex items-center gap-1 px-3 py-1 bg-secondary rounded-full text-sm">
+              <span className="inline-flex items-center gap-1 px-3 py-1 bg-secondary rounded-full text-sm animate-scale-in">
                 {selectedCategory.charAt(0).toUpperCase() + selectedCategory.slice(1)}
-                <button onClick={() => setSelectedCategory(null)}>
+                <button onClick={() => setSelectedCategory(null)} className="hover:text-primary transition-colors">
                   <X className="h-3 w-3" />
                 </button>
               </span>
             )}
-            {selectedSizes.map((size) => (
+            {selectedSize && (
               <span
-                key={size}
-                className="inline-flex items-center gap-1 px-3 py-1 bg-secondary rounded-full text-sm"
+                className="inline-flex items-center gap-1 px-3 py-1 bg-secondary rounded-full text-sm animate-scale-in"
               >
-                Size: {size}
-                <button onClick={() => toggleSize(size)}>
+                Size: {selectedSize}
+                <button onClick={() => setSelectedSize(null)} className="hover:text-primary transition-colors">
                   <X className="h-3 w-3" />
                 </button>
               </span>
-            ))}
+            )}
             {selectedPriceRange !== null && (
-              <span className="inline-flex items-center gap-1 px-3 py-1 bg-secondary rounded-full text-sm">
+              <span className="inline-flex items-center gap-1 px-3 py-1 bg-secondary rounded-full text-sm animate-scale-in">
                 {priceRanges[selectedPriceRange].label}
-                <button onClick={() => setSelectedPriceRange(null)}>
+                <button onClick={() => setSelectedPriceRange(null)} className="hover:text-primary transition-colors">
                   <X className="h-3 w-3" />
                 </button>
               </span>
             )}
             <button
               onClick={clearFilters}
-              className="text-sm text-primary hover:underline"
+              className="text-sm text-primary hover:underline transition-all duration-200 hover:translate-x-0.5"
             >
               Clear all
             </button>
