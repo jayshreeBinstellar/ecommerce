@@ -20,7 +20,10 @@ const Navbar = () => {
 
   const isActive = (href: string) => {
     if (href === '/') return location.pathname === '/';
-    return location.pathname.startsWith(href.split('?')[0]);
+    const [path, query] = href.split('?');
+    if (location.pathname !== path) return false;
+    if (!query) return location.pathname === path && !location.search;
+    return location.search === `?${query}`;
   };
 
   return (
@@ -64,14 +67,14 @@ const Navbar = () => {
               <Link
                 key={link.href}
                 to={link.href}
-                className={`text-sm font-medium tracking-wide transition-colors hover:text-primary relative ${
+                className={`text-sm font-medium tracking-wide transition-all duration-300 relative group hover:text-primary ${
                   isActive(link.href) ? 'text-primary' : 'text-foreground'
                 }`}
               >
                 {link.label}
-                {isActive(link.href) && (
-                  <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary" />
-                )}
+                <span className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 ${
+                  isActive(link.href) ? 'right-0' : 'right-full group-hover:right-0'
+                }`} />
               </Link>
             ))}
           </nav>
