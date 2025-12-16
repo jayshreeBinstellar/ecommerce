@@ -1,23 +1,23 @@
-import { Product } from '@/types/product';
-import menShirt from '@/assets/products/men-shirt.jpg';
-import menBlazer from '@/assets/products/men-blazer.jpg';
-import menPolo from '@/assets/products/men-polo.jpg';
-import menJeans from '@/assets/products/men-jeans.jpg';
-import menBelt from '@/assets/products/men-belt.jpg';
-import menTshirt from '@/assets/products/men-tshirt.jpg';
-import menFormalPants from '@/assets/products/men-formal-pants.jpg';
-import womenDress from '@/assets/products/women-dress.jpg';
-import womenSweater from '@/assets/products/women-sweater.jpg';
-import womenSkirt from '@/assets/products/women-skirt.jpg';
-import womenCardigan from '@/assets/products/women-cardigan.jpg';
-import womenCocktail from '@/assets/products/women-cocktail.jpg';
-import womenLinenPants from '@/assets/products/women-linen-pants.jpg';
-import kidsTshirt from '@/assets/products/kids-tshirt.jpg';
-import kidsDungarees from '@/assets/products/kids-dungarees.jpg';
-import kidsShorts from '@/assets/products/kids-shorts.jpg';
-import kidsRaincoat from '@/assets/products/kids-raincoat.jpg';
-import kidsLeggings from '@/assets/products/kids-leggings.jpg';
-import kidsJacket from '@/assets/products/kids-jacket.jpg';
+import { Product } from '../types/product';
+import menShirt from '../assets/products/men-shirt.jpg';
+import menBlazer from '../assets/products/men-blazer.jpg';
+import menPolo from '../assets/products/men-polo.jpg';
+import menJeans from '../assets/products/men-jeans.jpg';
+import menBelt from '../assets/products/men-belt.jpg';
+import menTshirt from '../assets/products/men-tshirt.jpg';
+// import menFormalPants from '../assets/products/men-formal-pants.jpg';
+import womenDress from '../assets/products/women-dress.jpg';
+import womenSweater from '../assets/products/women-sweater.jpg';
+import womenSkirt from '../assets/products/women-skirt.jpg';
+import womenCardigan from '../assets/products/women-cardigan.jpg';
+import womenCocktail from '../assets/products/women-cocktail.jpg';
+import womenLinenPants from '../assets/products/women-linen-pants.jpg';
+import kidsTshirt from '../assets/products/kids-tshirt.jpg';
+import kidsDungarees from '../assets/products/kids-dungarees.jpg';
+import kidsShorts from '../assets/products/kids-shorts.jpg';
+import kidsRaincoat from '../assets/products/kids-raincoat.jpg';
+import kidsLeggings from '../assets/products/kids-leggings.jpg';
+import kidsJacket from '../assets/products/kids-jacket.jpg';
 
 export const products: Product[] = [
   // Men's Products
@@ -36,20 +36,20 @@ export const products: Product[] = [
     rating: 4.5,
     reviews: 128,
   },
-  {
-    id: 'm2',
-    name: 'Slim Fit Chinos',
-    price: 1999,
-    category: 'men',
-    subcategory: 'Pants',
-    sizes: ['28', '30', '32', '34', '36'],
-    colors: ['Khaki', 'Navy', 'Olive', 'Black'],
-    images: [menFormalPants],
-    description: 'Contemporary slim-fit chinos with stretch comfort. Versatile styling for any occasion.',
-    isNew: true,
-    rating: 4.3,
-    reviews: 89,
-  },
+  // {
+  //   id: 'm2',
+  //   name: 'Slim Fit Chinos',
+  //   price: 1999,
+  //   category: 'men',
+  //   subcategory: 'Pants',
+  //   sizes: ['28', '30', '32', '34', '36'],
+  //   colors: ['Khaki', 'Navy', 'Olive', 'Black'],
+  //   images: [menFormalPants],
+  //   description: 'Contemporary slim-fit chinos with stretch comfort. Versatile styling for any occasion.',
+  //   isNew: true,
+  //   rating: 4.3,
+  //   reviews: 89,
+  // },
   {
     id: 'm3',
     name: 'Wool Blend Blazer',
@@ -120,19 +120,19 @@ export const products: Product[] = [
     rating: 4.2,
     reviews: 456,
   },
-  {
-    id: 'm8',
-    name: 'Formal Dress Pants',
-    price: 2799,
-    category: 'men',
-    subcategory: 'Pants',
-    sizes: ['28', '30', '32', '34', '36', '38'],
-    colors: ['Black', 'Charcoal', 'Navy'],
-    images: [menFormalPants],
-    description: 'Tailored dress pants with refined finish. Perfect for office and formal events.',
-    rating: 4.5,
-    reviews: 178,
-  },
+  // {
+  //   id: 'm8',
+  //   name: 'Formal Dress Pants',
+  //   price: 2799,
+  //   category: 'men',
+  //   subcategory: 'Pants',
+  //   sizes: ['28', '30', '32', '34', '36', '38'],
+  //   colors: ['Black', 'Charcoal', 'Navy'],
+  //   images: [menFormalPants],
+  //   description: 'Tailored dress pants with refined finish. Perfect for office and formal events.',
+  //   rating: 4.5,
+  //   reviews: 178,
+  // },
 
   // Women's Products
   {
