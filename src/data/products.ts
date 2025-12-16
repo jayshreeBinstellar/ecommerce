@@ -1,10 +1,23 @@
 import { Product } from '@/types/product';
 import menShirt from '@/assets/products/men-shirt.jpg';
 import menBlazer from '@/assets/products/men-blazer.jpg';
+import menPolo from '@/assets/products/men-polo.jpg';
+import menJeans from '@/assets/products/men-jeans.jpg';
+import menBelt from '@/assets/products/men-belt.jpg';
+import menTshirt from '@/assets/products/men-tshirt.jpg';
+import menFormalPants from '@/assets/products/men-formal-pants.jpg';
 import womenDress from '@/assets/products/women-dress.jpg';
 import womenSweater from '@/assets/products/women-sweater.jpg';
+import womenSkirt from '@/assets/products/women-skirt.jpg';
+import womenCardigan from '@/assets/products/women-cardigan.jpg';
+import womenCocktail from '@/assets/products/women-cocktail.jpg';
+import womenLinenPants from '@/assets/products/women-linen-pants.jpg';
 import kidsTshirt from '@/assets/products/kids-tshirt.jpg';
 import kidsDungarees from '@/assets/products/kids-dungarees.jpg';
+import kidsShorts from '@/assets/products/kids-shorts.jpg';
+import kidsRaincoat from '@/assets/products/kids-raincoat.jpg';
+import kidsLeggings from '@/assets/products/kids-leggings.jpg';
+import kidsJacket from '@/assets/products/kids-jacket.jpg';
 
 export const products: Product[] = [
   // Men's Products
@@ -31,7 +44,7 @@ export const products: Product[] = [
     subcategory: 'Pants',
     sizes: ['28', '30', '32', '34', '36'],
     colors: ['Khaki', 'Navy', 'Olive', 'Black'],
-    images: [menShirt],
+    images: [menFormalPants],
     description: 'Contemporary slim-fit chinos with stretch comfort. Versatile styling for any occasion.',
     isNew: true,
     rating: 4.3,
@@ -60,7 +73,7 @@ export const products: Product[] = [
     subcategory: 'Jeans',
     sizes: ['28', '30', '32', '34', '36', '38'],
     colors: ['Dark Blue', 'Medium Wash', 'Black'],
-    images: [menBlazer],
+    images: [menJeans],
     description: 'High-quality denim with perfect stretch and comfort. Classic five-pocket styling.',
     rating: 4.4,
     reviews: 203,
@@ -73,7 +86,7 @@ export const products: Product[] = [
     subcategory: 'Polos',
     sizes: ['S', 'M', 'L', 'XL', 'XXL'],
     colors: ['White', 'Navy', 'Black', 'Burgundy'],
-    images: [menShirt],
+    images: [menPolo],
     description: 'Classic polo shirt in soft pique cotton. Perfect for smart-casual occasions.',
     isNew: true,
     rating: 4.6,
@@ -88,7 +101,7 @@ export const products: Product[] = [
     subcategory: 'Accessories',
     sizes: ['32', '34', '36', '38'],
     colors: ['Brown', 'Black', 'Tan'],
-    images: [menBlazer],
+    images: [menBelt],
     description: 'Genuine leather belt with classic buckle. Durable and stylish accessory.',
     isSale: true,
     rating: 4.8,
@@ -102,7 +115,7 @@ export const products: Product[] = [
     subcategory: 'T-Shirts',
     sizes: ['S', 'M', 'L', 'XL', 'XXL'],
     colors: ['White', 'Black', 'Gray', 'Navy'],
-    images: [menShirt],
+    images: [menTshirt],
     description: 'Essential cotton t-shirt with comfortable fit. Versatile wardrobe staple.',
     rating: 4.2,
     reviews: 456,
@@ -115,7 +128,7 @@ export const products: Product[] = [
     subcategory: 'Pants',
     sizes: ['28', '30', '32', '34', '36', '38'],
     colors: ['Black', 'Charcoal', 'Navy'],
-    images: [menBlazer],
+    images: [menFormalPants],
     description: 'Tailored dress pants with refined finish. Perfect for office and formal events.',
     rating: 4.5,
     reviews: 178,
@@ -159,7 +172,7 @@ export const products: Product[] = [
     subcategory: 'Pants',
     sizes: ['XS', 'S', 'M', 'L', 'XL'],
     colors: ['Black', 'Camel', 'Navy'],
-    images: [womenSweater],
+    images: [womenLinenPants],
     description: 'Sophisticated high-waist pants with tailored fit. Effortlessly chic for office or evening.',
     rating: 4.5,
     reviews: 145,
@@ -172,7 +185,7 @@ export const products: Product[] = [
     subcategory: 'Tops',
     sizes: ['XS', 'S', 'M', 'L'],
     colors: ['Ivory', 'Blush', 'Navy', 'Burgundy'],
-    images: [womenDress],
+    images: [womenSweater],
     description: 'Elegant silk blouse with delicate draping. A wardrobe essential for refined style.',
     isNew: true,
     rating: 4.4,
@@ -186,7 +199,7 @@ export const products: Product[] = [
     subcategory: 'Skirts',
     sizes: ['XS', 'S', 'M', 'L', 'XL'],
     colors: ['Black', 'Navy', 'Burgundy', 'Forest Green'],
-    images: [womenSweater],
+    images: [womenSkirt],
     description: 'Flattering A-line midi skirt in premium fabric. Versatile style for any occasion.',
     rating: 4.3,
     reviews: 134,
@@ -200,7 +213,7 @@ export const products: Product[] = [
     subcategory: 'Cardigans',
     sizes: ['XS', 'S', 'M', 'L'],
     colors: ['Oatmeal', 'Charcoal', 'Dusty Rose'],
-    images: [womenSweater],
+    images: [womenCardigan],
     description: 'Cozy wrap cardigan with tie belt. Perfect layering piece for transitional weather.',
     isSale: true,
     rating: 4.7,
@@ -214,7 +227,7 @@ export const products: Product[] = [
     subcategory: 'Dresses',
     sizes: ['XS', 'S', 'M', 'L'],
     colors: ['Black', 'Red', 'Emerald'],
-    images: [womenDress],
+    images: [womenCocktail],
     description: 'Stunning cocktail dress with elegant neckline. Make a statement at any event.',
     isNew: true,
     rating: 4.9,
@@ -228,7 +241,7 @@ export const products: Product[] = [
     subcategory: 'Pants',
     sizes: ['XS', 'S', 'M', 'L', 'XL'],
     colors: ['White', 'Beige', 'Light Blue'],
-    images: [womenSweater],
+    images: [womenLinenPants],
     description: 'Breezy linen wide-leg pants for effortless summer style. Comfortable and chic.',
     rating: 4.4,
     reviews: 189,
@@ -272,7 +285,7 @@ export const products: Product[] = [
     subcategory: 'Hoodies',
     sizes: ['2-3Y', '4-5Y', '6-7Y', '8-9Y', '10-11Y'],
     colors: ['Navy', 'Pink', 'Gray', 'Green'],
-    images: [kidsTshirt],
+    images: [kidsJacket],
     description: 'Super soft fleece hoodie with kangaroo pocket. Keeps little ones warm and cozy.',
     rating: 4.5,
     reviews: 189,
@@ -285,7 +298,7 @@ export const products: Product[] = [
     subcategory: 'Dresses',
     sizes: ['2-3Y', '4-5Y', '6-7Y', '8-9Y'],
     colors: ['Pink', 'Lavender', 'Mint'],
-    images: [kidsDungarees],
+    images: [kidsLeggings],
     description: 'Beautiful party dress with tulle skirt and sparkle details. Perfect for special occasions.',
     isNew: true,
     rating: 4.8,
@@ -299,7 +312,7 @@ export const products: Product[] = [
     subcategory: 'Shorts',
     sizes: ['2-3Y', '4-5Y', '6-7Y', '8-9Y', '10-11Y'],
     colors: ['Khaki', 'Navy', 'Olive'],
-    images: [kidsTshirt],
+    images: [kidsShorts],
     description: 'Durable cargo shorts with multiple pockets. Perfect for active adventures.',
     rating: 4.4,
     reviews: 267,
@@ -313,7 +326,7 @@ export const products: Product[] = [
     subcategory: 'Outerwear',
     sizes: ['2-3Y', '4-5Y', '6-7Y', '8-9Y', '10-11Y'],
     colors: ['Yellow', 'Red', 'Blue'],
-    images: [kidsDungarees],
+    images: [kidsRaincoat],
     description: 'Waterproof raincoat with fun prints. Keep kids dry and stylish on rainy days.',
     isSale: true,
     rating: 4.6,
@@ -327,7 +340,7 @@ export const products: Product[] = [
     subcategory: 'Leggings',
     sizes: ['2-3Y', '4-5Y', '6-7Y', '8-9Y'],
     colors: ['Multi Pattern'],
-    images: [kidsTshirt],
+    images: [kidsLeggings],
     description: 'Pack of 2 comfortable leggings with fun prints. Stretchy and easy to move in.',
     isNew: true,
     rating: 4.3,
@@ -341,7 +354,7 @@ export const products: Product[] = [
     subcategory: 'Outerwear',
     sizes: ['2-3Y', '4-5Y', '6-7Y', '8-9Y', '10-11Y'],
     colors: ['Navy', 'Red', 'Black'],
-    images: [kidsDungarees],
+    images: [kidsJacket],
     description: 'Warm padded jacket with cozy lining. Essential winter protection for little ones.',
     rating: 4.8,
     reviews: 212,
